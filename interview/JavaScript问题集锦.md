@@ -102,4 +102,28 @@ console.log(typeof b) // number
 
 ---
 
-****
+**问题:**
+
+下面的代码返回什么, 为什么?
+
+```javascript
+var x = 20
+var temp = {
+  x: 40,
+  foo: function () {
+    var x = 10
+    return this.x
+  }
+}
+(temp.foo, temp.foo)() // 20, 而不是40
+```
+
+**原因:**
+
+即逗号操作符会从 左到右 计算它的操作数, 返回最后一个操作数的值。 所以 `(temp.foo, temp.foo)();` 等价于 `var fun = temp.foo; foo();`, `fun` 调用时 `this` 指向 `window`, 所以返回 20.
+
+## 5. parseInt 传入数字
+
+---
+
+**问题:**
