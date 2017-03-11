@@ -95,3 +95,7 @@ fun()
 console.log(typeof a) // undefined
 console.log(typeof b) // number
 ```
+
+[写了10年Javascript未必全了解的连续赋值运算](http://yanhaijing.com/javascript/2012/04/05/javascript-continuous-assignment-operator/)
+
+## 4. 逗号操作符
