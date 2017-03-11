@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="app">
+        <child-component :info="'我只是一名拖地的'" @click.native="onClick" ref="child" @somesth-happen="handleHappen"></child-component>
+    </div>
+    <script src="http://cdn.bootcss.com/vue/2.2.1/vue.js"></script>
+    <script>
+        Vue.component('child-component', {
+            template: '<div>自我介绍: {{info}}</div>',
+            props: {
+                info: String
+            },
+            data() {
+                return {
+                    title: 'I Love RMB.'
+                }
+            },
+            methods: {
+                describe(title) {
+                    console.log(`${title}: 子组件的 describe 方法`)
+                }
+            },
+            mounted() {
+                const vm = this
+                setTimeout(function() {
+                    vm.$emit('somesth-happen')
+                }, 1000)
+            }
+        })
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello 皮皮虾'
+            },
+            methods: {
+                onClick() {
+                    // 调用子组件的方法
+                    const {
+                        child
+                    } = this.$refs
+                    child.describe(child.title)
+                },
+                handleHappen() {
+                    console.log('子组件的 handle-happen 已被调用了.')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

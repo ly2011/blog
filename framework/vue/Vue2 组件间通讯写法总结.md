@@ -61,6 +61,8 @@ Vue 在 V2.1.0 版本后增加了 `Scoped Slots` 的特性。该特性支持在�
 
 `somesth-happen` 是事件名称, `handlerHappen` 是触发后, 父组件的处理函数。
 
+[demo](./demos/子组件传递数据给父组件.html)
+
 ## 4. 子组件调用父组件属性或方法
 
 ---
