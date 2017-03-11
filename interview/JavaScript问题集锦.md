@@ -47,7 +47,7 @@
 
 很简单, js 解析器会把数字后面的 `.` 当做小数而不是点操作符。
 
-## 3. 连等赋值问题
+## 3. 连等赋值问题(执行顺序: 从右到左)
 
 ---
 
@@ -72,7 +72,7 @@ console.log(b.x) // { n: 2 }
 
 拆分:
 
-实际执行过程: 从右到左, a先被赋值为 `{n: 2}`, 随后 `a.x` 被赋值 `{ n: 2 }`
+实际执行过程: 从右到左, a先被赋值为 `{ n: 2 }`, 随后 `a.x` 被赋值 `{ n: 2 }`
 
 ```javascript
 a = { n: 2 }
@@ -98,4 +98,8 @@ console.log(typeof b) // number
 
 [写了10年Javascript未必全了解的连续赋值运算](http://yanhaijing.com/javascript/2012/04/05/javascript-continuous-assignment-operator/)
 
-## 4. 逗号操作符
+## 4. 逗号操作符(执行顺序)
+
+---
+
+****
