@@ -164,7 +164,7 @@ function flatten (arr) {
   function isArray (arr) {
     if (!Array.isArray) {
       Array.isArray = function (arr) {
-        return Object.prototype.toString.call(arr) == '[Object Array]'
+        return Object.prototype.toString.call(arr) == '[object Array]'
       }
     }
     return Array.isArray(arr)
@@ -181,3 +181,35 @@ flatten([1, 2, 3, [4, 5]])
 利用 `array.toString()` 然后重新解析也可以完成, 但是此时数组元素类型丢失。这种方法利用了 `ToString(array)` 会转换成 `'x, y, z...'` 。
 
 ## 7. 使用 `typeof bar === 'object'` 判断 `bar` 是不是一个对象有神马潜在的弊端? 如何避免这种弊端?
+
+**问题:**
+
+```javascript
+const obj = {}
+const arr = []
+
+console.log(typeof obj === 'object'); // true
+console.log(typeof arr === 'object'); // true
+console.log(typeof null === 'object'); // true
+```
+
+**原因:**
+
+从上面输出的结果来看, `typeof bar === 'object'` 并不能准确判断 `bar` 就是一个 Object。
+
+**解决办法:**
+
+可以通过 `Object.prototype.toString.call(bar) === '[object String]'` 来避免这种弊端:
+
+```javascript
+const obj = {}
+const arr = []
+
+console.log(Object.prototype.toString.call(obj)); // [object Object]
+console.log(Object.prototype.toString.call(arr)); // [object Array]
+console.log(Object.prototype.toString.call(null)); // [object Null]
+```
+
+## 8. 浮点数精度问题
+
+---
