@@ -98,7 +98,7 @@ console.log(typeof b) // number
 
 [写了10年Javascript未必全了解的连续赋值运算](http://yanhaijing.com/javascript/2012/04/05/javascript-continuous-assignment-operator/)
 
-## 4. 逗号操作符(执行顺序)
+## 4. 逗号操作符(执行顺序: 从左到右)
 
 ---
 
@@ -120,10 +120,64 @@ var temp = {
 
 **原因:**
 
-即逗号操作符会从 左到右 计算它的操作数, 返回最后一个操作数的值。 所以 `(temp.foo, temp.foo)();` 等价于 `var fun = temp.foo; foo();`, `fun` 调用时 `this` 指向 `window`, 所以返回 20.
+即逗号操作符会从 `左到右` 计算它的操作数, 返回最后一个操作数的值。 所以 `(temp.foo, temp.foo)();` 等价于 `var fun = temp.foo; foo();`, `fun` 调用时 `this` 指向 `window`, 所以返回 20.
 
 ## 5. parseInt 传入数字
 
 ---
 
 **问题:**
+
+`parseInt` 传入数字时为什么会有以下输出?
+
+```javascript
+parseInt(0.000008) // 0
+parseInt(0.0000008) // 8
+```
+
+**原因:**
+
+`parseInt(arg)` 时会调用 `arg.toString()`。
+
+```javascript
+(0.000008).toString() // '0.000008'
+(0.0000008).toString() // '8e-7'
+```
+
+
+## 6. 数组的展开/扁平
+
+---
+
+**问题:**
+
+`[1, 2, [4, 5]] ---> [1, 2, 3, 4, 5]`
+
+```javascript
+function flatten (arr) {
+  if (!isArray(arr) || !arr.length) {
+    return []
+  } else {
+    return Array.prototype.concat.apply([], arr.map(val => isArray(val) ? flatten(val) : val))
+  }
+
+  function isArray (arr) {
+    if (!Array.isArray) {
+      Array.isArray = function (arr) {
+        return Object.prototype.toString.call(arr) == '[Object Array]'
+      }
+    }
+    return Array.isArray(arr)
+  }
+}
+
+flatten([1, 2, 3, [4, 5]])
+
+// [1, 2, 3, 4, 5]
+```
+
+**方法2: (array.toString())**
+
+利用 `array.toString()` 然后重新解析也可以完成, 但是此时数组元素类型丢失。这种方法利用了 `ToString(array)` 会转换成 `'x, y, z...'` 。
+
+## 7. 使用 `typeof bar === 'object'` 判断 `bar` 是不是一个对象有神马潜在的弊端? 如何避免这种弊端?
