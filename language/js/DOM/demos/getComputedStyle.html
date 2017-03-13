@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>css</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #elem-container {
+            position: absolute;
+            left: 100px;
+            top: 200px;
+            height: 100px;
+        }
+
+        h3::after {
+            content: '我是自动生成的'
+        }
+    </style>
+</head>
+
+<body>
+    <div id="elem-container">ly</div>
+    <div id="output"></div>
+    <h3>我在这里, 你在哪里呢?</h3>
+
+    <script>
+        let elem1 = document.getElementById('elem-container')
+        let style = window.getComputedStyle(elem1, null)
+        let height = style.getPropertyValue('height')
+        console.log('style: ', style)
+        console.log('height: ', height)
+        document.getElementById('output').innerHTML = height
+
+        let h3 = document.querySelector('h3')
+        let result = window.getComputedStyle(h3, '::after')
+        console.log('result: ', result)
+    </script>
+</body>
+
+</html>
