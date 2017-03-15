@@ -110,5 +110,551 @@ demo:
 在上面的例子中, 我们多次操作了 dom 节点, 为提高性能和效率, 会先将所有的节点转换成文档碎片 fragment 进行编译操作, 解析操作完成后, 再将 fragment 添加到原来的真实 dom 节点中。
 
 ```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <title>comp</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" name="username" id="username" v-model="username" value=""> {{username}}
+    </div>
+
+    <script>
+        function Compile(node, vm) {
+            if (node) {
+                this.$frag = this.nodeToFragment(node, vm)
+                return this.$frag
+            }
+        }
+
+        Compile.prototype = {
+            nodeToFragment(node, vm) {
+                const self = this
+                const frag = document.createDocumentFragment()
+                let child
+
+                while (child = node.firstChild) {
+                    self.compileElement(child, vm)
+
+                    // 将所有属性添加到fragment中
+                    frag.append(child)
+                }
+
+                return frag
+            },
+
+            compileElement(node, vm) {
+
+                const reg = /\{\{(.*)\}\}/
+
+                // 节点类型为元素
+                if (node.nodeType === 1) {
+                    const attr = Array.prototype.slice.call(node.attributes)
+
+                    // 解析属性
+                    attr.map((item, index) => {
+                        if (item.nodeName === 'v-model') {
+                            const name = item.nodeValue // 获取v-model绑定的属性名
+                            node.addEventListener('input', e => {
+                                // 给相应的 data 属性赋值, 进而触发该属性的set方法
+                                vm.data[name] = e.target.value
+                            })
+                            node.value = vm.data[name] // 将data的值赋给该node
+                            node.removeAttribute('v-model')
+                        }
+                    })
+                }
+
+                // 节点类型为text
+                if (node.nodeType === 3) {
+                    if (reg.test(node.nodeValue)) {
+                        const name = RegExp.$1 // 获取匹配到的字符串
+                        node.nodeValue = vm.data[name] // 将data的值赋给该node
+                    }
+                }
+            }
+        }
+
+        function Vue(options) {
+            this.data = options.data
+            const data = this.data
+            const id = options.el
+            const dom = new Compile(document.getElementById(id), this)
+
+            // 编译完成后, 将dom返回到app中
+            document.getElementById(id).appendChild(dom)
+        }
+
+        const vm = new Vue({
+            el: 'app',
+            data: {
+                username: 'Hello Kitty'
+            }
+        })
+    </script>
+</body>
+
+</html>
+```
+
+## 五、实现简单的 Observe (Object.defineProperty)
+
+---
+
+简单的 Observe 定义如下:
+
+```javascript
+function defineReactive (obj, key, val) {
+  Object.defineProperty(obj, key, {
+    get () {
+      console.log(`get val: ${val}`);
+      return val
+    },
+    set (newVal) {
+      if (val === newVal) {
+        return
+      }
+      val = newVal
+      console.log(`set val: ${val}`);
+    }
+  })
+}
+
+function observe (obj, vm) {
+  Object.keys(obj).map((key) => {
+    defineReactive(vm, key, obj[key])
+  })
+}
+```
+
+完整代码如下:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>comp</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" name="username" id="username" v-model="username" value=""> {{username}}
+    </div>
+
+    <script>
+        function Compile(node, vm) {
+            if (node) {
+                this.$frag = this.nodeToFragment(node, vm)
+                return this.$frag
+            }
+        }
+
+        Compile.prototype = {
+            nodeToFragment(node, vm) {
+                const self = this
+                const frag = document.createDocumentFragment()
+                let child
+
+                while (child = node.firstChild) {
+                    self.compileElement(child, vm)
+
+                    // 将所有属性添加到fragment中
+                    frag.append(child)
+                }
+
+                return frag
+            },
+
+            compileElement(node, vm) {
+
+                const reg = /\{\{(.*)\}\}/
+
+                // 节点类型为元素
+                if (node.nodeType === 1) {
+                    const attr = Array.prototype.slice.call(node.attributes)
+
+                    // 解析属性
+                    attr.map((item, index) => {
+                        if (item.nodeName === 'v-model') {
+                            const name = item.nodeValue // 获取v-model绑定的属性名
+                            node.addEventListener('input', e => {
+                                    // 给相应的 data 属性赋值, 进而触发该属性的set方法
+                                    // vm.data[name] = e.target.value
+                                    vm[name] = e.target.value // vm.data[name] => vm[name]
+                                })
+                                // node.value = vm.data[name] // 将data的值赋给该node
+                            node.value = vm[name] // vm.data[name] => vm[name]
+                            node.removeAttribute('v-model')
+                        }
+                    })
+                }
+
+                // 节点类型为text
+                if (node.nodeType === 3) {
+                    if (reg.test(node.nodeValue)) {
+                        const name = RegExp.$1 // 获取匹配到的字符串
+                            // node.nodeValue = vm.data[name] // 将data的值赋给该node
+                        node.nodeValue = vm[name] // vm.data[name] => vm[name]
+                    }
+                }
+            }
+        }
+
+        function defineReactive(obj, key, val) {
+            Object.defineProperty(obj, key, {
+                get() {
+                    console.log(`get val: ${val}`);
+                    return val
+                },
+                set(newVal) {
+                    if (val === newVal) {
+                        return
+                    }
+                    val = newVal
+                    console.log(`set val: ${val}`);
+                }
+            })
+        }
+
+        function observe(obj, vm) {
+            Object.keys(obj).map((key) => {
+                defineReactive(vm, key, obj[key])
+            })
+        }
+
+        function Vue(options) {
+            this.data = options.data
+            const data = this.data
+
+            observe(data, this)
+
+            const id = options.el
+            const dom = new Compile(document.getElementById(id), this)
+
+            // 编译完成后, 将dom返回到app中
+            document.getElementById(id).appendChild(dom)
+        }
+
+        const vm = new Vue({
+            el: 'app',
+            data: {
+                username: 'Hello Kitty'
+            }
+        })
+    </script>
+</body>
+
+</html>
+```
+
+到这, 虽然 set 方法触发了, 但是文本节点 {{text}} 的内容没有变化, 要让绑定的文本节点同步变化, 我们需要引入订阅发布模式。
+
+## 六、订阅发布模式
+
+---
+
+> 订阅发布模式(又称观察者模式)定义了一种一对多的关系, 让多个观察者同时监听某一个主题对象, 这个主题对象的状态发生改变时就会通知所有观察者对象。
+
+发布者发出通知 => 主题对象收到通知并推送给订阅者 => 订阅者执行相应操作
+
+- 首先我们要一个收集订阅者的容器, 定义一个 Dep 作为主题对象
+
+```javascript
+function Dep () {
+  this.subs = []
+}
+
+Dep.prototype = {
+  addSub (sub) {
+    this.subs.push(sub)
+  },
+  notify () {
+    this.subs.map(sub => {
+      sub.update()
+    })
+  }
+}
+```
+
+- 然后定义订阅者 Watcher
+
+```javascript
+function Watcher (vm, node, name, type) {
+  Dep.target = this
+  this.name = name
+  this.node = node
+  this.vm = vm
+  this.type = type
+  this.update()
+  Dep.target = null
+}
+
+Watcher.prototype = {
+  update () {
+    this.get()
+    this.node[this.type] = this.value // 订阅者执行相应操作
+  },
+  // 获取 data 的属性值
+  get () {
+    this.value = this.vm[this.name] // 触发相应属性的get
+  }
+}
+```
+
+- 添加订阅者 Watcher 到主题对象 Dep, 发布者发出通知放到属性监听里面
+
+```javascript
+function defineReactive(obj, key, val) {
+
+    const dep = new Dep()
+
+    Object.defineProperty(obj, key, {
+        get() {
+
+            // 添加订阅者 watcher 到主题对象 Dep
+            if (Dep.target) {
+              // JS的浏览器单线程特性, 保证这个全局变量在同一时间内, 只会有同一个监听器在使用
+              dep.addSub(Dep.target)
+            }
+
+            console.log(`get val: ${val}`);
+            return val
+        },
+        set(newVal) {
+            if (val === newVal) {
+                return
+            }
+            val = newVal
+            console.log(`set val: ${val}`);
+
+            // 作为发布者发出通知
+            dep.notify()
+        }
+    })
+}
+```
+
+- 最后需要订阅的地方
+
+```javascript
+compileElement(node, vm) {
+
+    const reg = /\{\{(.*)\}\}/
+
+    // 节点类型为元素
+    if (node.nodeType === 1) {
+        const attr = Array.prototype.slice.call(node.attributes)
+
+        // 解析属性
+        attr.map((item, index) => {
+            if (item.nodeName === 'v-model') {
+                const name = item.nodeValue // 获取v-model绑定的属性名
+                node.addEventListener('input', e => {
+                        // 给相应的 data 属性赋值, 进而触发该属性的set方法
+                        // vm.data[name] = e.target.value
+                        vm[name] = e.target.value // vm.data[name] => vm[name]
+                    })
+                    // node.value = vm.data[name] // 将data的值赋给该node
+                // node.value = vm[name] // vm.data[name] => vm[name]
+
+                new Watcher(vm, node, name, 'value')
+                node.removeAttribute('v-model')
+            }
+        })
+    }
+
+    // 节点类型为text
+    if (node.nodeType === 3) {
+        if (reg.test(node.nodeValue)) {
+            const name = RegExp.$1 // 获取匹配到的字符串
+                // node.nodeValue = vm.data[name] // 将data的值赋给该node
+            // node.nodeValue = vm[name] // vm.data[name] => vm[name]
+
+            new Watcher(vm, node, name, 'nodeValue')
+        }
+    }
+}
+```
+
+完整版代码:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>comp</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" name="username" id="username" v-model="username" value=""> {{username}}
+    </div>
+
+    <script>
+        function Compile(node, vm) {
+            if (node) {
+                this.$frag = this.nodeToFragment(node, vm)
+                return this.$frag
+            }
+        }
+
+        Compile.prototype = {
+            nodeToFragment(node, vm) {
+                const self = this
+                const frag = document.createDocumentFragment()
+                let child
+
+                while (child = node.firstChild) {
+                    self.compileElement(child, vm)
+
+                    // 将所有属性添加到fragment中
+                    frag.append(child)
+                }
+
+                return frag
+            },
+
+            compileElement(node, vm) {
+
+                const reg = /\{\{(.*)\}\}/
+
+                // 节点类型为元素
+                if (node.nodeType === 1) {
+                    const attr = Array.prototype.slice.call(node.attributes)
+
+                    // 解析属性
+                    attr.map((item, index) => {
+                        if (item.nodeName === 'v-model') {
+                            const name = item.nodeValue // 获取v-model绑定的属性名
+                            node.addEventListener('input', e => {
+                                    // 给相应的 data 属性赋值, 进而触发该属性的set方法
+                                    // vm.data[name] = e.target.value
+                                    vm[name] = e.target.value // vm.data[name] => vm[name]
+                                })
+                                // node.value = vm.data[name] // 将data的值赋给该node
+                                // node.value = vm[name] // vm.data[name] => vm[name]
+
+                            new Watcher(vm, node, name, 'value')
+                            node.removeAttribute('v-model')
+                        }
+                    })
+                }
+
+                // 节点类型为text
+                if (node.nodeType === 3) {
+                    if (reg.test(node.nodeValue)) {
+                        const name = RegExp.$1 // 获取匹配到的字符串
+                            // node.nodeValue = vm.data[name] // 将data的值赋给该node
+                            // node.nodeValue = vm[name] // vm.data[name] => vm[name]
+                        new Watcher(vm, node, name, 'nodeValue')
+                    }
+                }
+            }
+        }
+
+        function Dep() {
+            this.subs = []
+        }
+
+        Dep.prototype = {
+            addSub(sub) {
+                this.subs.push(sub)
+            },
+            notify() {
+                this.subs.map(sub => {
+                    sub.update()
+                })
+            }
+        }
+
+        function Watcher(vm, node, name, type) {
+            Dep.target = this
+            this.name = name
+            this.node = node
+            this.vm = vm
+            this.type = type
+            this.update()
+            Dep.target = null
+        }
+
+        Watcher.prototype = {
+            update() {
+                this.get()
+                this.node[this.type] = this.value // 订阅者执行相应操作
+            },
+            // 获取 data 的属性值
+            get() {
+                this.value = this.vm[this.name] // 触发相应属性的get
+            }
+        }
+
+        function defineReactive(obj, key, val) {
+
+            const dep = new Dep()
+
+            Object.defineProperty(obj, key, {
+                get() {
+
+                    // 添加订阅者 watcher 到主题对象 Dep
+                    if (Dep.target) {
+                        // JS的浏览器单线程特性, 保证这个全局变量在同一时间内, 只会有同一个监听器在使用
+                        dep.addSub(Dep.target)
+                    }
+
+                    console.log(`get val: ${val}`);
+                    return val
+                },
+                set(newVal) {
+                    if (val === newVal) {
+                        return
+                    }
+                    val = newVal
+                    console.log(`set val: ${val}`);
+
+                    // 作为发布者发出通知
+                    dep.notify()
+                }
+            })
+        }
+
+        function observe(obj, vm) {
+            Object.keys(obj).map((key) => {
+                defineReactive(vm, key, obj[key])
+            })
+        }
+
+        function Vue(options) {
+            this.data = options.data
+            const data = this.data
+
+            observe(data, this)
+
+            const id = options.el
+            const dom = new Compile(document.getElementById(id), this)
+
+            // 编译完成后, 将dom返回到app中
+            document.getElementById(id).appendChild(dom)
+        }
+
+        const vm = new Vue({
+            el: 'app',
+            data: {
+                username: 'Hello Kitty'
+            }
+        })
+    </script>
+</body>
+
+</html>
 ```

@@ -32,12 +32,16 @@ swiper 是目前较为流行的移动端触摸滑动插件，因为其简单好�
 
 ```js
 var mySwiper = new Swiper('.swiper-container',{
-pagination : '.swiper-pagination',
+  pagination : '.swiper-pagination',
     paginationClickable: true,
     longSwipesRatio: 0.3,
     touchRatio:1,
-    observer:true,//修改swiper自己或子元素时，自动初始化swiper
-    observeParents:true,//修改swiper的父元素时，自动初始化swiper
+    spaceBetween: 30,
+    lazyLoading: true,
+    lazyLoadingInPrevNext: true,
+    slidesPerView: 4.8, // 每行展示多少张图片
+    observer:true, // 修改swiper自己或子元素时，自动初始化swiper
+    observeParents:true, // 修改swiper的父元素时，自动初始化swiper
 })
 ```
 
@@ -64,6 +68,10 @@ const vm = new Vue({
       autoplay: 5000,
       longSwipesRatio: 0.3,
       touchRatio: 1,
+      spaceBetween: 30,
+      lazyLoading: true,
+      lazyLoadingInPrevNext: true,
+      slidesPerView: 4.8, // 每行展示多少张图片
       observer: true, //修改swiper自己或子元素时，自动初始化swiper
       observeParents: true //修改swiper的父元素时，自动初始化swiper
     })
