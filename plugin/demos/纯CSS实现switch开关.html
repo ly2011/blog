@@ -1,0 +1,165 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #181818;
+        }
+
+        .cntr {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .switch-label {
+            position: relative;
+            display: block;
+            height: 22px;
+            width: 40px;
+            background: #000;
+            border-radius: 13px;
+            cursor: pointer;
+            border: 2px solid #404040;
+            transition: all .2s ease;
+        }
+
+        .switch-label:after {
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            display: block;
+            width: 22px;
+            height: 22px;
+            border-radius: 100px;
+            background-color: #a0a0a0;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+            content: '';
+            transition: all .3s ease;
+        }
+        /*.switch-label:active:after {
+            width: 26px;
+            background-color: #fff;
+        }*/
+
+        .switch-ipt:checked+label {
+            background-color: #1db955;
+            border-color: #1db955;
+        }
+
+        .switch-ipt:checked+label:after {
+            left: 16px;
+            background-color: #fff;
+        }
+        /*.switch-ipt:checked+label:active:after {
+            left: 12px;
+        }*/
+    </style>
+</head>
+
+<body>
+    <div class="cntr">
+        <input type="checkbox" id="switch-for" name="switch-for" class="switch-ipt hidden" value="">
+        <label for="switch-for" class="switch-label"></label>
+    </div>
+</body>
+
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #181818;
+        }
+
+        .cntr {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .switch-label {
+            position: relative;
+            display: block;
+            height: 22px;
+            width: 40px;
+            background: #000;
+            border-radius: 13px;
+            cursor: pointer;
+            border: 2px solid #404040;
+            transition: all .2s ease;
+        }
+
+        .switch-label:after {
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            display: block;
+            width: 22px;
+            height: 22px;
+            border-radius: 100px;
+            background-color: #a0a0a0;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+            content: '';
+            transition: all .3s ease;
+        }
+        /*.switch-label:active:after {
+            width: 26px;
+            background-color: #fff;
+        }*/
+
+        .switch-ipt:checked+label {
+            background-color: #1db955;
+            border-color: #1db955;
+        }
+
+        .switch-ipt:checked+label:after {
+            left: 16px;
+            background-color: #fff;
+        }
+        /*.switch-ipt:checked+label:active:after {
+            left: 12px;
+        }*/
+    </style>
+</head>
+
+<body>
+    <div class="cntr">
+        <input type="checkbox" id="switch-for" name="switch-for" class="switch-ipt hidden" value="">
+        <label for="switch-for" class="switch-label"></label>
+    </div>
+</body>
+
+</html>
+```
