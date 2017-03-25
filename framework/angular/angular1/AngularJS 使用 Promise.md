@@ -2,6 +2,12 @@
 
 ---
 
+<!-- TOC -->
+
+- [如何在 AngularJS 中使用 Promise](#如何在-angularjs-中使用-promise)
+
+<!-- /TOC -->
+
 要在 `AngularJS` 中使用 `Promise`, 要使用 `AngularJS` 的内置服务 `$q`。
 
 我们可以先使用 `$q` 的 `defer()` 方法创建一个 `deferred` 对象, 然后通过 `deferred` 对象的 `promise` 属性, 将这个对象变成一个 `promise` 对象; 这个 `deferred` 对象还提供了三个方法, 分别是 `resolve()`, `reject()`, `notify()`。
