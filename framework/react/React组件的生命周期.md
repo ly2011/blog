@@ -2,6 +2,25 @@
 
 ---
 
+<!-- TOC -->
+
+- [React组件的生命周期](#react组件的生命周期)
+  - [实例化](#实例化)
+    - [getDefaultProps](#getdefaultprops)
+    - [getInitialState](#getinitialstate)
+    - [componentWillMount](#componentwillmount)
+    - [render](#render)
+    - [componentDidMount](#componentdidmount)
+  - [存在期](#存在期)
+    - [componentWillReceiveProps](#componentwillreceiveprops)
+    - [shouldComponentUpdate](#shouldcomponentupdate)
+    - [componentWillUpdate](#componentwillupdate)
+    - [componentDidUpdate](#componentdidupdate)
+  - [销毁时](#销毁时)
+    - [componentWillUnmount](#componentwillunmount)
+
+<!-- /TOC -->
+
 一个 React 组件的生命周期分为三个部分: 实例化、存在期和销毁期。
 
 ## 实例化
