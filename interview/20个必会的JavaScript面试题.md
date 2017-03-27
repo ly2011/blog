@@ -561,7 +561,7 @@ function foo(){
 
 所以
 
-```
+```javascript
 // here bar is pointer to function foo(){return foo}.
 var bar = new foo();
 
