@@ -2,18 +2,18 @@
 
 ---
 
-[TOC]
-
 ## HTML5、移动开发meta标签
 
 ---
 
 - 声明字符编码 `<meta charset="utf-8">`
+
 关于html标签中的lang属性：
 简体中文 `<html lang="zh-cmn-Hans">`
 繁体中文 `<html lang="zh-cmn-Hant">`
 
 - 使用最新版的IE和Chrome
+
 `<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />`
 
 - 360 使用webkit内核渲染

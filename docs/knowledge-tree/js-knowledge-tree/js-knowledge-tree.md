@@ -6,7 +6,7 @@
 
 ---
 
-- [javascript 变量](./images/变量.gif)
+- javascript 变量
 
 - javascript 运算符
 
