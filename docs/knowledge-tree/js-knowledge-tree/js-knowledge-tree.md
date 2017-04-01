@@ -26,58 +26,58 @@
 
 ---
 
-![](./images/变量.gif)
+![](/knowledge-tree/js-knowledge-tree/images/变量.gif)
 
 ## 2. javascript 运算符
 
 ---
 
-![](./images/运算符.gif)
+![](/knowledge-tree/js-knowledge-tree/images/运算符.gif)
 
 ## 3. javascript 数组
 
 ---
 
-![](./images/数组.gif)
+![](/knowledge-tree/js-knowledge-tree/images/数组.gif)
 
 ## 4. 流程语句
 
 ---
 
-![](./images/流程语句.gif)
+![](/knowledge-tree/js-knowledge-tree/images/流程语句.gif)
 
 ## 5. 字符串函数
 
 ---
 
-![](./images/字符串函数.gif)
+![](/knowledge-tree/js-knowledge-tree/images/字符串函数.gif)
 
 ## 6. 函数基础
 
 ---
 
-![](./images/函数基础.gif)
+![](/knowledge-tree/js-knowledge-tree/images/函数基础.gif)
 
 ## 7. 基础DOM操作
 
 ---
 
-![](./images/基础DOM操作.gif)
+![](/knowledge-tree/js-knowledge-tree/images/基础DOM操作.gif)
 
 ## 8. DOM对象
 
 ---
 
-![](./images/DOM对象.gif)
+![](/knowledge-tree/js-knowledge-tree/images/DOM对象.jpg)
 
 ## 9. BOM浏览器对象模型
 
 ---
 
-![](./images/BOM浏览器对象模型.gif)
+![](/knowledge-tree/js-knowledge-tree/images/BOM浏览器对象模型.jpg)
 
 ## 10. javascript正则表达式
 
 ---
 
-![](./images/javascript正则表达式.gif)
+![](/knowledge-tree/js-knowledge-tree/images/javascript正则表达式.gif)

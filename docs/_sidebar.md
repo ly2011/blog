@@ -64,6 +64,40 @@
 
   - [js-knowledge-tree](/knowledge-tree/js-knowledge-tree/js-knowledge-tree.md)
 
+- [software]()
+
+  - [ide]()
+
+    - [atom]()
+
+      - [Atom 插件总结](/software/ide/atom/Atom 插件总结.md)
+
+      - [加快React开发的插件汇总](/software/ide/atom/加快React开发的插件汇总.md)
+
+    - [sublime]()
+
+      - [sublime快捷键配置](/software/ide/sublime/sublime快捷键配置.md)
+
+      - [sublime配置参数](/software/ide/sublime/sublime配置参数.md)
+
+      - [Sublime Text的列模式如何操作](/software/ide/sublime/Sublime Text的列模式如何操作.md)
+
+      - [前端代码检测利器——eslint for sublime安装指南](/software/ide/sublime/前端代码检测利器——eslint for sublime安装指南.md)
+
+    - [vscode]()
+
+      - [vscode 个人配置终结版](/software/ide/vscode/vscode 个人配置终结版.md)
+
+      - [Visual Studio Code之常备快捷键](/software/ide/vscode/Visual Studio Code之常备快捷键.md)
+
+      - [vscode 插件精选 - 献给所有前端工程师](/software/ide/vscode/vscode 插件精选 - 献给所有前端工程师.md)
+
+      - [让VSCode提示js更智能](/software/ide/vscode/让VSCode提示js更智能.md)
+
+      - [VSCode插件篇-Settings Sync](/software/ide/vscode/VSCode插件篇-Settings Sync.md)
+
+
+
 - [interview]()
 
   - [20个必会的JavaScript面试题](/interview/20个必会的JavaScript面试题.md)
