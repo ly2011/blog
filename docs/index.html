@@ -18,13 +18,13 @@
   window.$docsify = {
     name: 'font-end-blog',
     repo: 'https://github.com/ly2011/blog',
-    // loadSidebar: true,
-    // autoHeader: true,
-    // subMaxLevel: 6, // 显示目录
-    // loadNavbar: true,
-    // coverpage: true, //封面
-    // auto2top: true, // 切换页面回到页面顶部
-    // maxLevel: 6,
+    loadSidebar: true,
+    autoHeader: true,
+    subMaxLevel: 8, // 显示目录
+    loadNavbar: true,
+    coverpage: true, //封面
+    auto2top: true, // 切换页面回到页面顶部
+    maxLevel: 10,
   }
 
 </script>
@@ -32,7 +32,7 @@
 <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
 <script>
   if (typeof navigator.serviceWorker !== 'undefined') {
-    // navigator.serviceWorker.register('sw.js')
+    navigator.serviceWorker.register('sw.js')
   }
 
 </script>
