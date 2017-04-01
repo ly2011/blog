@@ -97,6 +97,11 @@
       - [VSCode插件篇-Settings Sync](/software/ide/vscode/VSCode插件篇-Settings Sync.md)
 
 
+  - [browsers]()
+
+    <!--- [chrome]()-->
+
+      - [chrome插件大全](/software/browsers/chrome/chrome插件大全.md)
 
 - [interview]()
 
