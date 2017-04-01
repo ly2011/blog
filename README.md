@@ -1,1 +1,1 @@
-# [blog](https://github.com/ly2011/blog)
+# [blog](https://ly2011.github.io/blog)
