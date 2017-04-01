@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>font-end-blog</title>
@@ -9,6 +10,7 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
 </head>
+
 <body>
   <div id="app"></div>
 </body>
@@ -16,14 +18,23 @@
   window.$docsify = {
     name: 'font-end-blog',
     repo: 'https://github.com/ly2011/blog',
-    coverpage: true, //封面
-    auto2top: true, // 切换页面回到页面顶部
+    // loadSidebar: true,
+    // autoHeader: true,
+    // subMaxLevel: 6, // 显示目录
+    // loadNavbar: true,
+    // coverpage: true, //封面
+    // auto2top: true, // 切换页面回到页面顶部
+    // maxLevel: 6,
   }
+
 </script>
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+<script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
 <script>
   if (typeof navigator.serviceWorker !== 'undefined') {
-    navigator.serviceWorker.register('sw.js')
+    // navigator.serviceWorker.register('sw.js')
   }
+
 </script>
+
 </html>
