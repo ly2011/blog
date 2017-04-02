@@ -260,3 +260,125 @@ ctx.textBaseline = 'middle' // top、hanging、middle、alphabetic、 ideographi
 ctx.direction = 'inherit' // ltr、 rtl、 inherit
 
 ```
+
+## 图像
+
+---
+
+```javascript
+
+var img = new Image()
+img.src = './images/logo.png'
+ctx.drawImage(img, 0, 0) // img为图像, (0, 0)为起始坐标
+
+```
+
+这里的img可以是img对象, 可以是一个img元素
+
+```javascript
+
+<img id="img" src="./images/logo.png" />
+ctx.drawImage(document.getElementById('img'), 0, 0)
+
+```
+
+另外, 绘制图片的时候还可以对图片进行缩放, 类似于css中的 `background-size`
+
+```javascript
+
+ctx.drawImage(img, 0, 0, w, h) // w、h指定图片的宽高,则会同比例缩放
+
+```
+
+## 变形
+
+---
+
+- 状态
+
+`save()和restore()`
+
+save()用来保存当前状态, restore()用来恢复刚才保存的状态。
+
+```javascript
+
+ctx.fillStyle = 'black'
+ctx.fillRect(20, 20, 150, 150)
+ctx.save()  // 保存当前状态
+ctx.fillStyle = '#fff'
+ctx.fillRect(45, 45, 100, 100)
+ctx.restore() // 恢复到刚才保存的状态(即是回到 黑色)
+ctx.fillRect(70, 70, 50, 50)
+```
+
+效果图:
+
+![](https://img.alicdn.com/tps/TB1CLzJMVXXXXa_aXXXXXXXXXXX-235-227.png)
+
+- 位移
+
+```javascript
+
+ctx.translate(x, y) // 更改canvas的原点
+
+```
+
+```javascript
+
+var ctx = document.getElementById('canvas').getContext('2d')
+for (var i = 1; i < 4; i ++) {
+  ctx.save() // 使用save()方法保存状态, 让每次位移时都针对(0, 0)移动
+  ctx.translate(100 * i, 0)
+  ctx.fillRect(0, 50, 50, 50)
+  ctx.restore()
+}
+
+```
+
+- 旋转
+
+```javascript
+
+ctx.rotate(Math.PI * 2) // 按照原点顺时针旋转360度
+
+```
+
+```javascript
+
+ctx.translate(75, 75) // 把原点移动到(75, 75)
+for (var i = 1; i < 6; i++) {
+  ctx.save()
+  ctx.fillStyle = 'rgb(' + (50 * i)+ ',' + (255 - 50 * i) + ' 255)'
+  for (var j = 0; j < i * 6; j++) {
+    ctx.rotate(Math.PI * 2 / (i * 6))
+    ctx.beginPath()
+    ctx.arc(0, i * 12.5, 5, 0, Math.PI * 2, true)
+    ctx.fill()
+  }
+  ctx.restore()
+}
+
+```
+
+效果图:
+
+![](https://img.alicdn.com/tps/TB1VMIaMVXXXXXjXXXXXXXXXXXX-183-181.png)
+
+- 缩放
+
+```javascript
+
+ctx.scale(x, y) // 基于原点缩放, x、y是两个轴的缩放倍数
+
+```
+
+```javascript
+
+var ctx = document.getElementById('canvas').getContext('2d')
+ctx.fillStyle ='red'
+ctx.scale(0.8, 1.2)
+ctx.beginPath()
+ctx.arc(75, 75, 60, 0, Math.PI * 2)
+ctx.fill()
+
+```

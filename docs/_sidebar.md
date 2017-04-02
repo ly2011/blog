@@ -6,6 +6,8 @@
 
     - [移动开发常用head标签](/language/html/移动开发常用head标签)
 
+    - [Canvas之Api整理学习(-)](/language/html/Canvas之Api整理学习(-).md)
+
   - [CSS]()
 
     - [移动端 h5开发相关内容总结——CSS篇](/language/css/移动端 h5开发相关内容总结——CSS篇.md)
