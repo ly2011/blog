@@ -103,6 +103,12 @@
 
       - [chrome插件大全](/software/browsers/chrome/chrome插件大全.md)
 
+- [experience]()
+
+  <!--- [js]()-->
+
+    - [js常用函数总结](/experience/js/js常用函数总结.md)
+
 - [interview]()
 
   - [20个必会的JavaScript面试题](/interview/20个必会的JavaScript面试题.md)
