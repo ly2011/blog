@@ -1,4 +1,4 @@
-# 有趣的JavaScript原声数组函数
+# 有趣的JavaScript原生数组函数
 
 ---
 

@@ -42,7 +42,7 @@
 
     - [WebAPI]()
 
-      - [有趣的JavaScript原声数组函数](/language/js/WebAPI/有趣的JavaScript原声数组函数.md)
+      - [有趣的JavaScript原生数组函数](/language/js/WebAPI/有趣的JavaScript原生数组函数.md)
 
 - [framework]()
 
