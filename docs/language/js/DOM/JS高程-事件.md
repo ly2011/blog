@@ -188,3 +188,111 @@ btn.removeEventListener('click', handler, false) // 有效
 推荐将事件处理程序添加到事件流的冒泡阶段(最大限度地兼容各种浏览器)
 
 > IE9、Firefox、Safari、Chrome、Opera支持DOM2级事件处理程序
+
+### IE事件处理程序
+
+---
+
+IE实现了与DOM中类似的两个方法: `attachEvent()` 和 `detachEvent()`。这两个方法接受
+相同的两个参数: 事件处理程序名与事件处理程序函数。由于 IE8 及更早版本只支持事件冒泡,所以通过 `attachEvent()` 添加的事件处理程序都会被添加到冒泡阶段。
+
+要使用 `attachEvent()` 为按钮添加一个事件处理程序, 可以使用以下:
+
+```javascript
+
+var btn = document.getElementById('myBtn')
+btn.attachEvent('onclick', function () {
+  console.log('Clicked');
+})
+
+```
+
+>注意, `attachEvent()` 第一个参数是 `onclick`, 而非DOM的 `addEventListener()` 方法的 `click` 。
+
+在 IE 中使用 `attachEvent()` 与 使用 DOM0 级方法的主要区别在于 事件处理程序的作用域。在使用 DOM0 级方法的情况下, 事件处理程序会在其所属元素的作用域内运行; 在使用 `attachEvent()` 方法的情况下, 事件处理程序会在全局作用域中运行, 因此 this 等于 window。
+
+```javascript
+
+var btn = document.getElementById('myBtn')
+btn.attachEvent('onclick', function () {
+  console.log(this === window); // true
+})
+
+```
+
+与DOM方法不同的是, 使用 `attachEvent()` 的事件处理程序不是以添加它们的顺序执行, 而是以相反的顺序被触发。
+
+>支持IE事件处理程序的浏览器有 IE 和 Opera。
+
+### 跨浏览器的事件处理程序
+
+---
+
+要保证处理程序事件的代码能在大多数浏览器下一致地运行, 只需关注冒泡阶段。
+
+第一个要创建的方法是 addHandler(), `addHandler()` 方法接受3个参数: 要操作的元素、事件名称和事件处理程序函数。
+
+EventUtil的用法如下:
+
+```javascript
+
+var EventUtil = {
+  addHandler: function (element, type, handler) {
+    if (element.addEventListener) {
+      element.addEventListener(type, handler, false)
+    } else if (element.attachEvent) {
+      element.attachEvent('on' + type, handler)
+    } else {
+      element['on' + type] = handler
+    }
+  },
+  removeHandler: function (element, type, handler) {
+    if (element.removeEventListener) {
+      element.removeEventListener(type, handler, false)
+    } else if (element.detachEvent) {
+      element.detachEvent('on' + type, handler)
+    } else {
+      element['on' + type] = null
+    }
+  }
+}
+
+```
+
+使用:
+
+```javascript
+
+var btn = document.getElementById('myBtn')
+var handler = function () {
+  console.log('Clicked');
+}
+EventUtil.addHandler(btn, 'click', handler)
+EventUtil.removeHandler(btn, 'click', handler)
+```
+
+## 事件对象
+
+---
+
+### DOM中的事件对象
+
+---
+
+兼容DOM(DOM0级或DOM2级)的浏览器会将 一个 event 对象传入到事件处理程序中。
+
+```javascript
+
+var btn = document.getElementById('myBtn')
+btn.onclick = function (event) {
+  console.log(event.type); // click
+}
+btn.addEventListener('click', function (event) {
+  console.log(event.type);  // click
+}, false)
+
+```
+
+在事件处理程序内部, 对象 this 始终等于 currentTarget 的值, 而 target则只包含事件的实际目标。
+
+要阻止特定事件的默认行为
