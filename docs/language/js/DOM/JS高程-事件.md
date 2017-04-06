@@ -295,4 +295,17 @@ btn.addEventListener('click', function (event) {
 
 在事件处理程序内部, 对象 this 始终等于 currentTarget 的值, 而 target则只包含事件的实际目标。
 
-要阻止特定事件的默认行为
+要阻止特定事件的默认行为，可使用 `preventDefault()` 方法。
+
+>只有 cancelable 属性设为 true 的事件,才可以使用 `preventDefault()` 来取消其默认行为。
+
+`stopPropagation()` 方法用于立即停止事件在 DOM 层次中的传播, 即取消进一步的事件捕获或冒泡。
+
+### IE 中的事件对象
+
+---
+
+
+## 事件类型
+
+---
