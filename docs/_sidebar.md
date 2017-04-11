@@ -110,6 +110,7 @@
     <!--- [chrome]()-->
 
       - [chrome插件大全](/software/browsers/chrome/chrome插件大全.md)
+      - [收藏几个免费的在线使用工具](/software/browsers/收藏几个免费的在线使用工具.md)
 
 - [experience]()
 
