@@ -1,4 +1,4 @@
-- [首页](/)
+<!-- - [首页](/) -->
 
 - [language]()
 
@@ -38,6 +38,8 @@
       - [箭头函数学习总结](/language/js/ES6/箭头函数学习总结.md)
 
     - [nodejs]()
+
+      - [在chrome上调试nodejs](/language/js/nodejs/在chrome上调试nodejs.md)
 
     - [function-programming]()
 
@@ -110,7 +112,12 @@
     <!--- [chrome]()-->
 
       - [chrome插件大全](/software/browsers/chrome/chrome插件大全.md)
-      - [收藏几个免费的在线使用工具](/software/browsers/收藏几个免费的在线使用工具.md)
+
+  - [other]()
+
+      - [收藏几个免费的在线使用工具](/software/other/收藏几个免费的在线使用工具.md)
+
+      - [ubuntu环境下开发配置](/software/other/ubuntu环境下开发配置.md)
 
 - [experience]()
 
