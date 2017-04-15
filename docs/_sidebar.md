@@ -106,6 +106,9 @@
 
       - [VSCode插件篇-Settings Sync](/software/ide/vscode/VSCode插件篇-Settings Sync.md)
 
+    - [ps]()
+
+      - [标注神器——Zeplin使用初体验(Ps版)](/software/ide/ps/标注神器——Zeplin使用初体验(Ps版).md)
 
   - [browsers]()
 
