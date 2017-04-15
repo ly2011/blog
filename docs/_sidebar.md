@@ -108,7 +108,7 @@
 
     - [ps]()
 
-      - [标注神器——Zeplin使用初体验(Ps版)](/software/ide/ps/标注神器——Zeplin使用初体验(Ps版).md)
+      - [标注神器Zeplin使用初体验](/software/ide/ps/标注神器Zeplin使用初体验.md)
 
   - [browsers]()
 
