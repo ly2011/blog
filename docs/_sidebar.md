@@ -128,6 +128,9 @@
 
     - [js常用函数总结](/experience/js/js常用函数总结.md)
 
+  - [让textarea高度随输入自适应](/experience/让textarea高度随输入自适应.md)
+  - [跨浏览器监听用户输入](/experience/跨浏览器监听用户输入.md)
+
 - [interview]()
 
   - [20个必会的JavaScript面试题](/interview/20个必会的JavaScript面试题.md)
@@ -139,3 +142,13 @@
   - [创建长度为100的数组](/interview/创建长度为100的数组.md)
 
   - [前端经典面试题-从输入URL到页面加载发生了什么](/interview/前端经典面试题-从输入URL到页面加载发生了什么.md)
+
+- [build-tool]()
+
+  - [gulp]()
+
+    - [Gulp中的增量编译](/build-tool/gulp/Gulp中的增量编译.md)
+
+    - [gulp常用插件收集及用法](/build-tool/gulp/gulp常用插件收集及用法.md)
+
+    - [gulp自动化压缩合并、加版本号解决方案](/build-tool/gulp/gulp自动化压缩合并、加版本号解决方案.md)
