@@ -30,6 +30,7 @@
 
       - [DOM的基本操作](/language/js/DOM/overview.md)
       - [JS高程-事件](/language/js/DOM/JS高程-事件.md)
+      - [DOM 的节点属性](/language/js/DOM/DOM 的节点属性.md)
 
     - [ES6]()
 
