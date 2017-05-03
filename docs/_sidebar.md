@@ -43,6 +43,9 @@
     - [nodejs]()
 
       - [在chrome上调试nodejs](/language/js/nodejs/在chrome上调试nodejs.md)
+      - [删除 windows 下 node_modules 过深的目录](/language/js/nodejs/删除 windows 下 node_modules 过深的目录.md)
+      - [node 学习笔记 - EventEmitter](/language/js/nodejs/node 学习笔记 - EventEmitter.md)
+      - [node 学习笔记 - path 处理](/language/js/nodejs/node 学习笔记 - path 处理)
 
     - [function-programming]()
 
@@ -133,6 +136,7 @@
     - [iOS下的点击事件失效解决方法](/experience/js/iOS下的点击事件失效解决方法.md)
     - [js-获取所有兄弟节点](/experience/js/js-获取所有兄弟节点.md)
     - [最受欢迎的 5 款 Node.js 端到端测试框架](/experience/js/最受欢迎的 5 款 Node.js 端到端测试框架.md)
+    - [比正则更优雅地获取url参数](/experience/js/比正则更优雅地获取url参数.md)
 
   - [css]()
     - [移动端1px细线解决方案总结](移动端1px细线解决方案总结.md)
