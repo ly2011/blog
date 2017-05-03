@@ -53,6 +53,11 @@
 
       - [有趣的JavaScript原生数组函数](/language/js/WebAPI/有趣的JavaScript原生数组函数.md)
 
+  - [go]()
+
+    - [在Visual Studio Code配置GoLang开发环境](/language/go/在Visual Studio Code配置GoLang开发环境.md)
+    - [在Sublime Text 配置GoLang开发环境](/language/go/在Sublime Text 配置GoLang开发环境.md)
+
 - [framework]()
 
   - [angular]()
