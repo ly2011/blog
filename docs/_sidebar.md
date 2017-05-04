@@ -45,13 +45,18 @@
       - [在chrome上调试nodejs](/language/js/nodejs/在chrome上调试nodejs.md)
       - [删除 windows 下 node_modules 过深的目录](/language/js/nodejs/删除 windows 下 node_modules 过深的目录.md)
       - [node 学习笔记 - EventEmitter](/language/js/nodejs/node 学习笔记 - EventEmitter.md)
-      - [node 学习笔记 - path 处理](/language/js/nodejs/node 学习笔记 - path 处理)
+      - [node 学习笔记 - path 处理](/language/js/nodejs/node 学习笔记 - path 处理.md)
+      - [[译] Yarn 和 Npm 命令行小抄](/language/js/nodejs/[译] Yarn 和 Npm 命令行小抄.md)
 
     - [function-programming]()
 
     - [WebAPI]()
 
       - [有趣的JavaScript原生数组函数](/language/js/WebAPI/有趣的JavaScript原生数组函数.md)
+
+    - [TypeScript]()
+
+      - [[译] 函数式 TypeScript](/language/js/TypeScript/[译] 函数式 TypeScript.md)
 
 - [framework]()
 
@@ -68,6 +73,8 @@
 
     - [React组件的生命周期](/framework/react/React组件的生命周期.md)
 
+    - [[译] React 中的 AJAX 请求：获取数据的方法与时机](/framework/react/[译] React 中的 AJAX 请求：获取数据的方法与时机.md)
+
   - [vue]()
 
     - [vue.js 数组操作以及bug](/framework/vue/vue.js 数组操作以及bug.md)
@@ -75,6 +82,8 @@
     - [vue1 vs vue2 常用用法总结](/framework/vue/vue1 vs vue2 常用用法总结.md)
 
     - [Vue2 组件间通讯写法总结](/framework/vue/Vue2 组件间通讯写法总结.md)
+
+    - [Reactjs vs. Vuejs](/framework/vue/Reactjs vs. Vuejs.md)
 
 - [knowledge-tree]()
 
