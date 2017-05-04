@@ -28,6 +28,8 @@
 
     - [Ajax]()
 
+      - [[译] Fetch 请求的本地缓存](/language/js/ajax/[译] Fetch 请求的本地缓存.md)
+
     - [DOM]()
 
       - [DOM的基本操作](/language/js/DOM/overview.md)
@@ -47,6 +49,7 @@
       - [node 学习笔记 - EventEmitter](/language/js/nodejs/node 学习笔记 - EventEmitter.md)
       - [node 学习笔记 - path 处理](/language/js/nodejs/node 学习笔记 - path 处理.md)
       - [[译] Yarn 和 Npm 命令行小抄](/language/js/nodejs/[译] Yarn 和 Npm 命令行小抄.md)
+      - [[译] 让人倾倒的 11 个 Npm Trick](/language/js/nodejs/[译] 让人倾倒的 11 个 Npm Trick.md)
 
     - [function-programming]()
 
