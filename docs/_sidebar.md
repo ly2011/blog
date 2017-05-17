@@ -139,6 +139,7 @@
     <!--- [chrome]()-->
 
       - [chrome插件大全](/software/browsers/chrome/chrome插件大全.md)
+      - [如何更好地运用 Chrome (Google)](/software/browsers/chrome/如何更好地运用 Chrome (Google).md)
 
   - [other]()
 
