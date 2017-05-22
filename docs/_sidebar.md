@@ -65,6 +65,7 @@
 
     - [在Visual Studio Code配置GoLang开发环境](/language/go/在Visual Studio Code配置GoLang开发环境.md)
     - [在Sublime Text 配置GoLang开发环境](/language/go/在Sublime Text 配置GoLang开发环境.md)
+    - [go 搭建最简单的http server服务器.md](/language/go/go 搭建最简单的http server服务器.md)
 
 
 - [framework]()
