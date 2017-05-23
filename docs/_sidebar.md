@@ -65,7 +65,8 @@
 
     - [在Visual Studio Code配置GoLang开发环境](/language/go/在Visual Studio Code配置GoLang开发环境.md)
     - [在Sublime Text 配置GoLang开发环境](/language/go/在Sublime Text 配置GoLang开发环境.md)
-    - [go 搭建最简单的http server服务器.md](/language/go/go 搭建最简单的http server服务器.md)
+    - [go 搭建最简单的http server服务器](/language/go/go 搭建最简单的http server服务器.md)
+    - [Go 语言中的 new() 和 make()的区别](/language/go/Go 语言中的 new() 和 make()的区别.md)
 
 
 - [framework]()
